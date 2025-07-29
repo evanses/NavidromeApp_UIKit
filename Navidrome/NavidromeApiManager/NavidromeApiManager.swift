@@ -48,6 +48,12 @@ final class NavidromeApiManager {
     
     // MARK: fetchArtists
     func fetchArtists(completion: @escaping ((Result<[NavidromeArtist], NetworkError>) -> Void)) {
+        guard let apiHost = KeychainManager.shared.getHost(),
+            let login = KeychainManager.shared.getLogin(),
+            let pass = KeychainManager.shared.getPassword() else {
+                return
+            }
+
         let uri = "\(apiHost)/rest/getArtists.view?u=\(login)&p=\(pass)&v=1.12.0&c=iosApp&f=json"
         
         guard let url = URL(string: uri) else {
@@ -117,6 +123,12 @@ final class NavidromeApiManager {
     
     // MARK: fetchAlbums
     func fetchAlbums(completion: @escaping ((Result<[NavidroveAlbum], NetworkError>) -> Void)) {
+        guard let apiHost = KeychainManager.shared.getHost(),
+            let login = KeychainManager.shared.getLogin(),
+            let pass = KeychainManager.shared.getPassword() else {
+                return
+            }
+
         let uri = "\(apiHost)/rest/getAlbumList.view?u=\(login)&p=\(pass)&v=1.12.0&c=iosApp&f=json&type=alphabeticalByName&size=200"
         
         guard let url = URL(string: uri) else {
@@ -184,6 +196,12 @@ final class NavidromeApiManager {
     
     // MARK: fetchImage
     func fetchImage(coverArt: String, completion: @escaping ((Result<UIImage, NetworkError>) -> Void)) {
+        guard let apiHost = KeychainManager.shared.getHost(),
+            let login = KeychainManager.shared.getLogin(),
+            let pass = KeychainManager.shared.getPassword() else {
+                return
+            }
+
         let imageUri = "\(apiHost)/rest/getCoverArt.view?u=\(login)&p=\(pass)&v=1.15&c=iosApp&id=\(coverArt)"
         
         guard let imageUrl = URL(string: imageUri) else {
@@ -225,6 +243,12 @@ final class NavidromeApiManager {
     
     // MARK: fetchArtistFull
     func fetchArtistFull(for id: String, completion: @escaping ((Result<NavidromeArtistFull, NetworkError>) -> Void)) {
+        guard let apiHost = KeychainManager.shared.getHost(),
+            let login = KeychainManager.shared.getLogin(),
+            let pass = KeychainManager.shared.getPassword() else {
+                return
+            }
+
         let uri = "\(apiHost)/rest/getArtist.view?u=\(login)&p=\(pass)&v=1.12.0&c=iosApp&f=json&id=\(id)"
         
         guard let url = URL(string: uri) else {
@@ -284,6 +308,12 @@ final class NavidromeApiManager {
 
     // MARK: fetchAlbumFull
     func fetchAlbumFull(for id: String, completion: @escaping ((Result<NavidromeAlbumFull, NetworkError>) -> Void)) {
+        guard let apiHost = KeychainManager.shared.getHost(),
+            let login = KeychainManager.shared.getLogin(),
+            let pass = KeychainManager.shared.getPassword() else {
+                return
+            }
+
         let uri = "\(apiHost)/rest/getAlbum.view?u=\(login)&p=\(pass)&v=1.12.0&c=iosApp&f=json&id=\(id)"
         
         guard let url = URL(string: uri) else {
@@ -341,4 +371,66 @@ final class NavidromeApiManager {
         }.resume()
     }
     
+    // MARK: loginCheck
+    func loginCheck(host: String, login: String, password: String, completion: @escaping ((Result<NavidromePing, NetworkError>) -> Void)) {
+        let uri = "\(host)/rest/getArtists.view?u=\(login)&p=\(password)&v=1.12.0&c=iosApp&f=json"
+        
+        guard let url = URL(string: uri) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) {
+            data,
+            response,
+            error in
+            
+            if let error {
+                completion(.failure(.notInternet))
+                print("when loginCheck, not internet")
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+               response.statusCode != 200 {
+                print("when loginCheck, response status code is not 200")
+                completion(.failure(.responseError))
+                return
+            }
+            
+            guard let data else {
+                print("when loginCheck, no data")
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let res = try decoder.decode(NavidromePingResponse.self, from: data)
+                
+                if res.subsonicResponse.status != "ok" {
+                    if let navidromeError = res.subsonicResponse.error {
+                        if navidromeError.code == 40 {
+                            completion(.failure(.wrongLoginOrPass))
+                        } else {
+                            print("when loginCheck message dont ok: \(navidromeError.message)")
+                            completion(.failure(.smthWentWrong))
+                        }
+
+                    } else {
+                        completion(.failure(.smthWentWrong))
+                    }
+                }
+                
+                print("success login")
+                completion(.success(res.subsonicResponse))
+                
+            } catch (let error) {
+                print(error)
+                
+                completion(.failure(.parsingError))
+            }
+            
+        }.resume()
+    }
 }

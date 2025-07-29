@@ -1,4 +1,4 @@
-class AlbumViewModel {
+final class AlbumViewModel {
     
     let albumId: String
     var albumFull: NavidromeAlbumFull?

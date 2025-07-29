@@ -20,7 +20,6 @@ class MiniPlayerView: UIView {
         imageView.image = UIImage(systemName: "music.note")
         return imageView
     }()
-
     
     private lazy var artistLabel: UILabel = {
         let label = UILabel()

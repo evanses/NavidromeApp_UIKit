@@ -32,7 +32,13 @@ class PlayerManager {
         }
     }
     
-    func playNewSong(song: NavidromeSong) {        
+    func playNewSong(song: NavidromeSong) {
+        guard let apiHost = KeychainManager.shared.getHost(),
+            let login = KeychainManager.shared.getLogin(),
+            let pass = KeychainManager.shared.getPassword() else {
+                return
+            }
+
         guard let url = URL(string: "\(apiHost)/rest/stream.view?u=\(login)&p=\(pass)&v=1.15&c=iosApp&id=\(song.id)") else {
             return
         }

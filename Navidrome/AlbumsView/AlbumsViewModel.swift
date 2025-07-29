@@ -1,4 +1,4 @@
-class AlbumsViewModel {
+final class AlbumsViewModel {
     
     var albums: [NavidroveAlbum] = []
     

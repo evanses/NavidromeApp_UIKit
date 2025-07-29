@@ -5,6 +5,7 @@ enum NetworkError: Error {
     case notInternet
     case responseError
     case smthWentWrong
+    case wrongLoginOrPass
     
     var description: String {
         switch self {
@@ -20,7 +21,8 @@ enum NetworkError: Error {
             return "Неверный ответ сервера"
         case .smthWentWrong:
             return "Что-то пошло не так"
+        case .wrongLoginOrPass:
+            return "Неверный логин или пароль"
         }
-        
     }
 }

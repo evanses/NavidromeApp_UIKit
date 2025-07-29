@@ -13,22 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         
-        let startLibraryViewController = StartLibraryViewController()
-        let startLibraryNavigationController = UINavigationController(rootViewController: startLibraryViewController)
-        startLibraryViewController.tabBarItem = UITabBarItem(title: "Библиотека", image:  UIImage(systemName: "house") , tag: 0)
-        
-        let tabBarController = MainTabBarController()
-        let controllers = [
-            startLibraryNavigationController
-        ]
-        tabBarController.viewControllers = controllers.map { $0 }
-        tabBarController.selectedIndex = 0
-        
-        PlayerManager.shared.delegate = tabBarController.miniPlayerView
-        
-        window.rootViewController = tabBarController
-        window.makeKeyAndVisible()
-        self.window = window
+        AppRouter.shared.setWindow(window)
+        AppRouter.shared.startApp()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

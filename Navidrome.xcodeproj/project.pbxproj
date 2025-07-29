@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A622D93F2E392B2E00453A8C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A622D93E2E392B2E00453A8C /* KeychainAccess */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A622D6E72E337A9D00453A8C /* Navidrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navidrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A622D93F2E392B2E00453A8C /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = Navidrome;
 			packageProductDependencies = (
+				A622D93E2E392B2E00453A8C /* KeychainAccess */,
 			);
 			productName = Navidrome;
 			productReference = A622D6E72E337A9D00453A8C /* Navidrome.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = A622D6DE2E337A9D00453A8C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A622D93D2E392B2E00453A8C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A622D6E82E337A9D00453A8C /* Products */;
 			projectDirPath = "";
@@ -347,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A622D93D2E392B2E00453A8C /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A622D93E2E392B2E00453A8C /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A622D93D2E392B2E00453A8C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A622D6DF2E337A9D00453A8C /* Project object */;
 }

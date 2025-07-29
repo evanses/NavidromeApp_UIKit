@@ -1,3 +1,5 @@
+// MARK: Song
+
 struct NavidromeSong: Codable {
     let id: String
     let title: String
@@ -34,6 +36,8 @@ struct NavidromeArtist: Codable {
     }
 }
 
+// MARK: Atrist
+
 struct ArtistsNavidromeArtistsSecondResponse: Codable {
     let name: String
     let artist: [NavidromeArtist]
@@ -62,6 +66,7 @@ struct ArtistsNavidroveMainResponse: Codable {
     }
 }
 
+// MARK: Album
 
 struct NavidroveAlbum: Codable {
     let id: String
@@ -122,7 +127,7 @@ struct AlbumNavidroveMainResponse: Codable {
     }
 }
 
-
+// MARK: Artist Full
 
 struct NavidromeArtistFull: Codable {
     let id: String
@@ -166,8 +171,7 @@ struct NavidromeAtristFullMainResponse: Codable {
     }
 }
 
-
-
+// MARK: Single Album Full
 
 struct NavidromeAlbumFull: Codable {
     let id: String
@@ -186,6 +190,25 @@ struct NavidromeAlbumFullPreRespone: Codable {
 
 struct NavidromeAlbumtFullMainResponse: Codable {
     let subsonicResponse: NavidromeAlbumFullPreRespone
+    
+    private enum CodingKeys: String, CodingKey {
+        case subsonicResponse = "subsonic-response"
+    }
+}
+
+
+// MARK: Login
+
+struct NavidromePing: Codable {
+    let status: String
+    let version: String
+    let type: String
+    let serverVersion: String
+    let error: NavidroveError?
+}
+
+struct NavidromePingResponse: Codable {
+    let subsonicResponse: NavidromePing
     
     private enum CodingKeys: String, CodingKey {
         case subsonicResponse = "subsonic-response"

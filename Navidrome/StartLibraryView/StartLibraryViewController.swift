@@ -10,7 +10,6 @@ class StartLibraryViewController: UIViewController {
         ("Плейлисты", "list.bullet"),
         ("Жанры", "guitars"),
         ("Избранное", "star.fill"),
-        ("Все треки", "music.note"),
         ("Скачанное", "icloud.and.arrow.down"),
     ]
     

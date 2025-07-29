@@ -1,4 +1,4 @@
-class ArtistViewModel {
+final class ArtistViewModel {
     var artistId: String
     var artist: NavidromeArtistFull?
     

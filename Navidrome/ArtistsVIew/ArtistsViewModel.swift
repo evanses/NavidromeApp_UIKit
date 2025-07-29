@@ -1,4 +1,4 @@
-class ArtistsViewModel {
+final class ArtistsViewModel {
     
     var artists: [NavidromeArtist] = []
     
