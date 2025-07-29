@@ -1,4 +1,4 @@
-You must create Secrets.swift file with creds like:
+You must create Navidrome/Secrets.swift file with creds like:
 
 ```swift
 let apiHost = "host"
