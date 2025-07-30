@@ -90,7 +90,7 @@ class SettingsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "Версия"
+        label.text = "Версия API"
         return label
     }()
     
@@ -259,73 +259,74 @@ class SettingsViewController: UIViewController {
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
         let leadingTrailingConstant = 8.0
+        let spacerConstant = 4.0
         
         NSLayoutConstraint.activate([
             urlLoginView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
             urlLoginView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: leadingTrailingConstant),
             urlLoginView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -leadingTrailingConstant),
             
-            hostTitleLabel.topAnchor.constraint(equalTo: urlLoginView.topAnchor, constant: 8.0),
-            hostTitleLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: 8.0),
+            hostTitleLabel.topAnchor.constraint(equalTo: urlLoginView.topAnchor, constant: leadingTrailingConstant),
+            hostTitleLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: leadingTrailingConstant),
             
-            hostLabel.topAnchor.constraint(equalTo: hostTitleLabel.bottomAnchor, constant: 4.0),
-            hostLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: 8.0),
+            hostLabel.topAnchor.constraint(equalTo: hostTitleLabel.bottomAnchor, constant: spacerConstant),
+            hostLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: leadingTrailingConstant),
             
-            firstSeparator.topAnchor.constraint(equalTo: hostLabel.bottomAnchor, constant: 4.0),
-            firstSeparator.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: 8.0),
-            firstSeparator.trailingAnchor.constraint(equalTo: urlLoginView.trailingAnchor, constant: -8.0),
+            firstSeparator.topAnchor.constraint(equalTo: hostLabel.bottomAnchor, constant: spacerConstant),
+            firstSeparator.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: leadingTrailingConstant),
+            firstSeparator.trailingAnchor.constraint(equalTo: urlLoginView.trailingAnchor, constant: -leadingTrailingConstant),
             firstSeparator.heightAnchor.constraint(equalToConstant: 1.0),
             
-            loginTitleLabel.topAnchor.constraint(equalTo: firstSeparator.bottomAnchor, constant: 4.0),
-            loginTitleLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: 8.0),
+            loginTitleLabel.topAnchor.constraint(equalTo: firstSeparator.bottomAnchor, constant: spacerConstant),
+            loginTitleLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: leadingTrailingConstant),
             
-            loginLabel.topAnchor.constraint(equalTo: loginTitleLabel.bottomAnchor, constant: 4.0),
-            loginLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: 8.0),
+            loginLabel.topAnchor.constraint(equalTo: loginTitleLabel.bottomAnchor, constant: spacerConstant),
+            loginLabel.leadingAnchor.constraint(equalTo: urlLoginView.leadingAnchor, constant: leadingTrailingConstant),
             
-            urlLoginView.bottomAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 8.0),
+            urlLoginView.bottomAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: leadingTrailingConstant),
             
-            srvView.topAnchor.constraint(equalTo: urlLoginView.bottomAnchor, constant: 8.0),
+            srvView.topAnchor.constraint(equalTo: urlLoginView.bottomAnchor, constant: leadingTrailingConstant),
             srvView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: leadingTrailingConstant),
             srvView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -leadingTrailingConstant),
             
-            srvVersionTitleLabel.topAnchor.constraint(equalTo: srvView.topAnchor, constant: 8.0),
-            srvVersionTitleLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
+            srvVersionTitleLabel.topAnchor.constraint(equalTo: srvView.topAnchor, constant: leadingTrailingConstant),
+            srvVersionTitleLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
             
-            srvVersionLabel.topAnchor.constraint(equalTo: srvVersionTitleLabel.bottomAnchor, constant: 4.0),
-            srvVersionLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
+            srvVersionLabel.topAnchor.constraint(equalTo: srvVersionTitleLabel.bottomAnchor, constant: spacerConstant),
+            srvVersionLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
             
-            secondSeparator.topAnchor.constraint(equalTo: srvVersionLabel.bottomAnchor, constant: 4.0),
-            secondSeparator.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
-            secondSeparator.trailingAnchor.constraint(equalTo: srvView.trailingAnchor, constant: -8.0),
+            secondSeparator.topAnchor.constraint(equalTo: srvVersionLabel.bottomAnchor, constant: spacerConstant),
+            secondSeparator.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
+            secondSeparator.trailingAnchor.constraint(equalTo: srvView.trailingAnchor, constant: -leadingTrailingConstant),
             secondSeparator.heightAnchor.constraint(equalToConstant: 1.0),
             
-            srvTypeTitleLabel.topAnchor.constraint(equalTo: secondSeparator.bottomAnchor, constant: 4.0),
-            srvTypeTitleLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
+            srvTypeTitleLabel.topAnchor.constraint(equalTo: secondSeparator.bottomAnchor, constant: spacerConstant),
+            srvTypeTitleLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
             
-            srvTypeLabel.topAnchor.constraint(equalTo: srvTypeTitleLabel.bottomAnchor, constant: 4.0),
-            srvTypeLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
+            srvTypeLabel.topAnchor.constraint(equalTo: srvTypeTitleLabel.bottomAnchor, constant: spacerConstant),
+            srvTypeLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
             
-            thirdSeparator.topAnchor.constraint(equalTo: srvTypeLabel.bottomAnchor, constant: 4.0),
-            thirdSeparator.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
-            thirdSeparator.trailingAnchor.constraint(equalTo: srvView.trailingAnchor, constant: -8.0),
+            thirdSeparator.topAnchor.constraint(equalTo: srvTypeLabel.bottomAnchor, constant: spacerConstant),
+            thirdSeparator.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
+            thirdSeparator.trailingAnchor.constraint(equalTo: srvView.trailingAnchor, constant: -leadingTrailingConstant),
             thirdSeparator.heightAnchor.constraint(equalToConstant: 1.0),
 
-            srvVersionMainTitleLabel.topAnchor.constraint(equalTo: thirdSeparator.bottomAnchor, constant: 4.0),
-            srvVersionMainTitleLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
+            srvVersionMainTitleLabel.topAnchor.constraint(equalTo: thirdSeparator.bottomAnchor, constant: spacerConstant),
+            srvVersionMainTitleLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
             
-            srvVersionMainLabel.topAnchor.constraint(equalTo: srvVersionMainTitleLabel.bottomAnchor, constant: 4.0),
-            srvVersionMainLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: 8.0),
+            srvVersionMainLabel.topAnchor.constraint(equalTo: srvVersionMainTitleLabel.bottomAnchor, constant: spacerConstant),
+            srvVersionMainLabel.leadingAnchor.constraint(equalTo: srvView.leadingAnchor, constant: leadingTrailingConstant),
             
-            srvView.bottomAnchor.constraint(equalTo: srvVersionMainLabel.bottomAnchor, constant: 8.0),
+            srvView.bottomAnchor.constraint(equalTo: srvVersionMainLabel.bottomAnchor, constant: leadingTrailingConstant),
             
-            logoutView.topAnchor.constraint(equalTo: srvView.bottomAnchor, constant: 8.0),
+            logoutView.topAnchor.constraint(equalTo: srvView.bottomAnchor, constant: leadingTrailingConstant),
             logoutView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: leadingTrailingConstant),
             logoutView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -leadingTrailingConstant),
             
-            logoutLabel.topAnchor.constraint(equalTo: logoutView.topAnchor, constant: 8.0),
-            logoutLabel.leadingAnchor.constraint(equalTo: logoutView.leadingAnchor, constant: 8.0),
+            logoutLabel.topAnchor.constraint(equalTo: logoutView.topAnchor, constant: leadingTrailingConstant),
+            logoutLabel.leadingAnchor.constraint(equalTo: logoutView.leadingAnchor, constant: leadingTrailingConstant),
             
-            logoutView.bottomAnchor.constraint(equalTo: logoutLabel.bottomAnchor, constant: 8.0)
+            logoutView.bottomAnchor.constraint(equalTo: logoutLabel.bottomAnchor, constant: leadingTrailingConstant)
         ])
     }
     
