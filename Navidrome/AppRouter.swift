@@ -32,10 +32,11 @@ final class AppRouter {
         
         let settingsMV = SettingsViewModel()
         let settingsVC = SettingsViewController(viewModel: settingsMV)
+        let setNavNC = UINavigationController(rootViewController: settingsVC)
         settingsVC.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape"), tag: 1)
 
         let tabBar = MainTabBarController()
-        tabBar.viewControllers = [nav, settingsVC]
+        tabBar.viewControllers = [nav, setNavNC]
         tabBar.selectedIndex = 0
 
         PlayerManager.shared.delegate = tabBar.miniPlayerView

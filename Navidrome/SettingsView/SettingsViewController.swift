@@ -223,7 +223,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "Настройки"
         view.backgroundColor = .myBackground
         
         addSubviews()
@@ -262,7 +262,7 @@ class SettingsViewController: UIViewController {
         let spacerConstant = 4.0
         
         NSLayoutConstraint.activate([
-            urlLoginView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
+            urlLoginView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: leadingTrailingConstant),
             urlLoginView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: leadingTrailingConstant),
             urlLoginView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -leadingTrailingConstant),
             
@@ -285,7 +285,7 @@ class SettingsViewController: UIViewController {
             
             urlLoginView.bottomAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: leadingTrailingConstant),
             
-            srvView.topAnchor.constraint(equalTo: urlLoginView.bottomAnchor, constant: leadingTrailingConstant),
+            srvView.topAnchor.constraint(equalTo: urlLoginView.bottomAnchor, constant: 16.0),
             srvView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: leadingTrailingConstant),
             srvView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -leadingTrailingConstant),
             
@@ -319,7 +319,7 @@ class SettingsViewController: UIViewController {
             
             srvView.bottomAnchor.constraint(equalTo: srvVersionMainLabel.bottomAnchor, constant: leadingTrailingConstant),
             
-            logoutView.topAnchor.constraint(equalTo: srvView.bottomAnchor, constant: leadingTrailingConstant),
+            logoutView.topAnchor.constraint(equalTo: srvView.bottomAnchor, constant: 16.0),
             logoutView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: leadingTrailingConstant),
             logoutView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -leadingTrailingConstant),
             

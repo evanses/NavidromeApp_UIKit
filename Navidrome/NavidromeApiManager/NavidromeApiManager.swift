@@ -432,4 +432,17 @@ final class NavidromeApiManager {
             
         }.resume()
     }
+    
+    func fetchImageAsync(coverArt: String) async throws -> UIImage {
+            try await withCheckedThrowingContinuation { continuation in
+                self.fetchImage(coverArt: coverArt) { result in
+                    switch result {
+                    case .success(let image):
+                        continuation.resume(returning: image)
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        }
 }

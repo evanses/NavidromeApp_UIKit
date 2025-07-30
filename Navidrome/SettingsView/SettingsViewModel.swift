@@ -28,11 +28,10 @@ final class SettingsViewModel {
                         self.type = res.type
                         self.serverVersion = res.serverVersion
                     }
-                case .failure(let error):
+                case .failure(_):
                     print("error while loginCheck in SettingViewModel")
                 }
             }
-
     }
     
     func logout() {
