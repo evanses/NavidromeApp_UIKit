@@ -408,7 +408,10 @@ final class NavidromeApiManager {
                 let decoder = JSONDecoder()
                 let res = try decoder.decode(NavidromePingResponse.self, from: data)
                 
-                if res.subsonicResponse.status != "ok" {
+                if res.subsonicResponse.status == "ok" {
+                    print("success login")
+                    completion(.success(res.subsonicResponse))
+                } else {
                     if let navidromeError = res.subsonicResponse.error {
                         if navidromeError.code == 40 {
                             completion(.failure(.wrongLoginOrPass))
@@ -421,10 +424,6 @@ final class NavidromeApiManager {
                         completion(.failure(.smthWentWrong))
                     }
                 }
-                
-                print("success login")
-                completion(.success(res.subsonicResponse))
-                
             } catch (let error) {
                 print(error)
                 
